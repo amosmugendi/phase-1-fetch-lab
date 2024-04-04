@@ -1,5 +1,16 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
+  return fetch("https://anapioficeandfire.com/api/books")
+  .then(response=>{
+    if(!response.ok){
+      throw new Error('Neetwork response was not ok')
+    }
+    return response.json();
+  })
+  .then(function(data){
+    renderBooks(data)
+  })
+  .catch(error=> console.error('error fetching books:', error),)
   
 }
 
